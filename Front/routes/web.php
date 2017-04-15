@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home','StandardPageController@index');
+
+Route::get('/publikasi','StandardPageController@publikasi');
+
+Route::get('/detailpublikasi','StandardPageController@detailpublikasi');
+
+Route::get('/detailpublikasidua','StandardPageController@detailpublikasidua');
