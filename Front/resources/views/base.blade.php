@@ -11,7 +11,7 @@
     <body>
 
         <!-- Start: Header Section -->
-          @include('layout.navbarkonten')
+          @include('layout.navbar')
         <!-- End: Header Section -->
         <!-- Start: Slider Section -->
 
