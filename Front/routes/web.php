@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('content.signin');
 });
 
 Route::get('/home','StandardPageController@index');
@@ -22,3 +22,7 @@ Route::get('/publikasi','StandardPageController@publikasi');
 Route::get('/detailpublikasi','StandardPageController@detailpublikasi');
 
 Route::get('/detailpublikasidua','StandardPageController@detailpublikasidua');
+
+Route::get('/detailpublikasitiga','StandardPageController@detailpublikasitiga');
+
+Route::get('/profil','StandardPageController@profil');

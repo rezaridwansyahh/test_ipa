@@ -21,4 +21,12 @@ class StandardPageController extends Controller
     public function detailpublikasidua(){
       return view('content.detailpublikasidua');
     }
+
+    public function detailpublikasitiga(){
+      return view('content.detailpublikasitiga');
+    }
+
+    public function profil(){
+      return view('content.profil');
+    }
 }

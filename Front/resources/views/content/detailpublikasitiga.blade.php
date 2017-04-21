@@ -14,14 +14,13 @@
         <div class="row">
           <div class="booksmedia-detail-box">
               <div class="detailed-box">
-                  {{-- <div class="col-xs-12 col-sm-5 col-md-3">
+                  <div class="col-xs-12 col-sm-5 col-md-3">
                       <div class="post-thumbnail">
                           <div class="book-list-icon blue-icon"></div>
                           <img src="template/images/books-media/detail-page/300x454.jpg" alt="Book Image">
                       </div>
-                  </div> --}}
-                  <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="col-md-9">
+                  </div>
+                  <div class="col-xs-12 col-sm-7 col-md-6">
                       <div class="post-center-content">
                           <h2>The Great Gatsby</h2>
                           <p><strong>Author:</strong> F. Scott Fitzgerald</p>
@@ -69,8 +68,8 @@
                               </ul>
                           </div>
                       </div>
-                    </div>
-                    <div class="col-md-3">
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3 ">
                       <div class="post-right-content">
                           <h4>Available now</h4>
                           <p><strong>Total Copies:</strong> 01</p>
@@ -86,13 +85,22 @@
                               <div class="modal-dialog">
                           				<div class="loginmodal-container">
                           					<h1>Login to Your Account</h1><br>
-                          				  <form method="get" action="http://ft.unj.ac.id/wp-content/uploads/2016/04/Panduan-Skripsi-Non-Skripsi-Final_Cetak.pdf">
+                                    <p id="errormessage" align="center" style="font-weight: bold">
+                                    </p>
+                          				  <form>
                           					<input type="text" name="email" placeholder="Email">
                           					<input type="password" name="code" placeholder="Code">
-                          					<input type="submit" name="login" class="login loginmodal-submit" value="Login" />
+                          					<input id="submit" type="submit" name="login" class="login loginmodal-submit" value="Login" />
                                     {{-- <button name="login" class="login loginmodal-submit" download="http://ft.unj.ac.id/wp-content/uploads/2016/04/Panduan-Skripsi-Non-Skripsi-Final_Cetak.pdf">Login</button> --}}
                                     </form>
-
+                                    <script>
+                                    $(document).ready(function() {
+                                      $("#submit").click(function(event){
+                                        event.preventDefault();
+                                        $("#errormessage").text("Password Atau Username Salah");
+                                      });
+                                    });
+                                    </script>
                           				  <div class="login-help">
                           					<a href="#">Register</a> - <a href="#">Forgot Password</a>
                           				  </div>
@@ -100,8 +108,8 @@
                           		</div>
                           	</div>
                           <a href="#." class="btn btn-dark-gray">View sample</a>
+
                       </div>
-                    </div>
                   </div>
                   <div class="clearfix"></div>
               </div>

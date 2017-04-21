@@ -1,4 +1,4 @@
-<script type="text/javascript" src="template/js/jquery-1.12.4.min.js"></script>
+
 
 <!-- jQuery UI -->
 <script type="text/javascript" src="template/js/jquery-ui.min.js"></script>
