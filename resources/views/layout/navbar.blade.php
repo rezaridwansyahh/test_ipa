@@ -8,7 +8,7 @@
                             <div class="navbar-brand">
                                 <h1>
                                     <a href="index.html">
-                                        <img src="template/images/logo_white-alt.png" alt="LIBRARIA" />
+                                        <img src="/template/images/logo_white-alt.png" alt="LIBRARIA" />
                                     </a>
                                 </h1>
                             </div>
@@ -20,7 +20,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="topbar-info">
-                                      <a href="signin.html"><i class="fa fa-lock"></i>Login / Register</a>
+                                      <a href="/"><i class="fa fa-lock"></i>Login / Register</a>
 
                                         {{-- <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+61-3-8376-6284</a>
                                         <span>/</span>
@@ -63,7 +63,7 @@
                                                         <a class="remove" href="#"><i class="fa fa-trash-o"></i></a>
                                                     </li>
                                                     <li class="clearfix">
-                                                        <img src="template/images/64x80.jpg" alt="cart item" />
+                                                        <img src="/template/images/64x80.jpg" alt="cart item" />
                                                         <div class="item-info">
                                                             <div class="name">
                                                                 <a href="#">The Great Gatsby</a>
@@ -90,8 +90,8 @@
                         </div>
                         <div class="navbar-collapse hidden-sm hidden-xs">
                           <ul class="nav navbar-nav">
-                              <li><a href="services.html">Home</a></li>
-                              <li class="dropdown">
+                              <li><a href="http://ipa.or.id">Home</a></li>
+                              <!--li class="dropdown">
                                 <a data-toggle="dropdown" class="dropdown-toggle disabled" href="index.html">Commite</a>
                                 <ul class="dropdown-menu">
                                   <li><a href="http://www.ipa.or.id/page/associate-members" data-href="page/associate-members"><div>Associate Members</div></a></li>
@@ -109,13 +109,14 @@
                                   <li><a href="http://www.ipa.or.id/page/social-investment" data-href="page/social-investment"><div>Social Investment</div></a></li>
                                   <li><a href="http://www.ipa.or.id/page/unconventional-gas" data-href="page/unconventional-gas"><div>Unconventional Gas</div></a></li>
                                 </ul>
-                              </li>
-                              <li><a href="services.html">Membership</a></li>
+                              </li-->
+                              <li><a href="http://committee.ipa.or.id">Committee</a></li>
+                              <li><a href="http://membership.ipa.or.id">Membership</a></li>
                               <li class="dropdown">
                                   <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Publications</a>
                                   <ul class="dropdown-menu">
-                                      <li><a href="http://www.ipa.or.id/page/under-construction" data-href="page/under-construction"><div>Publication Database</div></a></li>
-                                      <li><a href="http://www.ipa.or.id/page/under-construction" data-href="page/under-construction"><div>Books and DVD's</div></a></li>
+                                      <li><a href="http://publication.ipa.or.id/publication"><div>Publication Database</div></a></li>
+                                      <li><a href="http://publication.ipa.or.id/dvd"><div>Books and DVD's</div></a></li>
                                   </ul>
                               </li>
                           </ul>

@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Route::get('/home','StandardPageController@index');
 
-Route::get('/publikasi','StandardPageController@publikasi');
+//Route::get('/publikasi','StandardPageController@publikasi');
+Route::get('/publikasi','PublikasiController@daftar');
+Route::get('/publikasi/{id}','PublikasiController@detail');
 
 Route::get('/detailpublikasi','StandardPageController@detailpublikasi');
 

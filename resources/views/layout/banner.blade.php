@@ -5,7 +5,7 @@
         </div>
         <div class="breadcrumb">
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="http://ipa.or.id">Home</a></li>
                 <li>Publikasi</li>
             </ul>
         </div>

@@ -4,7 +4,7 @@
       <title>@yield('title')</title>
 
       <!-- Favicon -->
-      <link href="template/images/favicon.ico" rel="icon" type="image/x-icon" />
+      <link href="/template/images/favicon.ico" rel="icon" type="image/x-icon" />
       @include('layout.head')
     </head>
 
