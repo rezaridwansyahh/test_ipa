@@ -2,6 +2,9 @@
 @section('title')
   Indonesia Petroleum Association | Publikasi | {{ $data['title'] }}
 @endsection
+@section('bcrumb_title')
+  Detail Publication
+@endsection
 @section('slider')
   @include('layout.banner')
 @endsection
@@ -9,7 +12,7 @@
   <div class="booksmedia-detail-main">
       <div class="container">
         <div class="row">
-            {{--@include('layout.search')--}}
+          {{--@include('layout.search')--}}
         </div>
         <div class="row">
           <div class="booksmedia-detail-box">

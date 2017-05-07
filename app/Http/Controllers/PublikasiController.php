@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 class PublikasiController extends Controller
 {
-    //
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    
     public function daftar()
     {
         try {

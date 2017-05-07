@@ -1,6 +1,9 @@
 @extends('base')
 @section('title')
-  Publikasi IPA.or.id
+  List Publications
+@endsection
+@section('bcrumb_title')
+  Publications
 @endsection
 @section('slider')
   @include('layout.banner')

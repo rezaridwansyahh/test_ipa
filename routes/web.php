@@ -12,13 +12,22 @@
 */
 
 Route::get('/', function () {
-    return view('content.signin');
+	if (!session()->has('access_token')) {
+		return view('content.signin');
+	}
+	else {
+		return redirect('/profil');
+	}
 });
+
+Route::post('/','StandardPageController@login')->name('/');
+
+Route::post('/logout','StandardPageController@logout')->name('/logout');
 
 Route::get('/home','StandardPageController@index');
 
-//Route::get('/publikasi','StandardPageController@publikasi');
 Route::get('/publikasi','PublikasiController@daftar');
+
 Route::get('/publikasi/{id}','PublikasiController@detail');
 
 Route::get('/detailpublikasi','StandardPageController@detailpublikasi');

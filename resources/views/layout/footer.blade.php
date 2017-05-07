@@ -2,10 +2,10 @@
     <div class="sub-footer">
         <div class="container">
             <div class="row">
-                <div class="footer-text col-md-3">
-                    <p>&copy; 2017 LIBRARIA. All rights reserved.</p>
+                <div class="footer-text col-md-6">
+                    <p>&copy; {{ date('Y') }} Indonesia Petroleum Association. All rights reserved.</p>
                 </div>
-                <div class="col-md-9 pull-right">
+                <div class="col-md-6 pull-right">
                     <ul id="tombols">
                     </ul>
                 </div>

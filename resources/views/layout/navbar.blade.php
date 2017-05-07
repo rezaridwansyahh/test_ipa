@@ -8,7 +8,7 @@
                             <div class="navbar-brand">
                                 <h1>
                                     <a href="index.html">
-                                        <img src="/template/images/logo_white-alt.png" alt="LIBRARIA" />
+                                        <img src="/template/images/logo_white-alt.png" alt="Indonesia Petroleum Association" />
                                     </a>
                                 </h1>
                             </div>
@@ -20,18 +20,26 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="topbar-info">
+                                      @if (!session()->has('access_token'))
                                       <a href="/"><i class="fa fa-lock"></i>Login / Register</a>
-
-                                        {{-- <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+61-3-8376-6284</a>
-                                        <span>/</span>
-                                        <a href="mailto:support@libraria.com"><i class="fa fa-envelope"></i>support@libraria.com</a> --}}
+                                      {{-- <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+61-3-8376-6284</a>
+                                      <span>/</span>
+                                      <a href="mailto:support@libraria.com"><i class="fa fa-envelope"></i>support@libraria.com</a> --}}
+                                      @else
+                                      <a href="javascript:void(0);"><i class="fa fa-lock"></i>Welcome, {{ session()->get('email') }}</a>
+                                      @endif
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="topbar-links">
-                                        <a href="signin.html">EN</a>
+                                        @if (session()->has('access_token'))
+                                        <a href="{{ route('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>, 
+                                        <form id="logout-form" action="{{ route('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                                         <SPAN>|</SPAN>
-                                        <a href="signin.html">ID</a>
+                                        @endif
+                                        <a href="javascript:void(0);">EN</a>
+                                        <SPAN>|</SPAN>
+                                        <a href="javascript:void(0);">ID</a>
                                         <span>|</span>
                                         <div class="header-cart dropdown">
                                           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
