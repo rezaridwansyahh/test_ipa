@@ -43,7 +43,8 @@ class StandardPageController extends Controller
         'refresh_token' => $response['data']['refresh_token'],
         'id' => $response['data']['profile']['id'],
         'group_type' => $response['data']['profile']['group_type'],
-        'email' => $response['data']['profile']['email']
+        'email' => $response['data']['profile']['email'],
+        'nama' => $response['data']['profile']['name'].' '.$response['data']['profile']['last_name']
       ]);
 
       return redirect(url()->previous());

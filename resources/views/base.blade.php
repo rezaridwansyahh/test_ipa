@@ -38,6 +38,7 @@
 
         <!-- jQuery Latest Version 1.x -->
         @include('layout.js')
+        @yield('js_more')
 
     </body>
 </html>
