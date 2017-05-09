@@ -40,27 +40,10 @@
                           <article>
                           <div class="row">
                             <div class="col-md-12">
-                              <div class="panel panel-default  panel--styled">
+                              <div class="panel panel-default">
                                 <div class="panel-body">
-                                  <div class="col-md-12 panelTop">
-                                    <div class="col-md-12">
-                                      <h2 class="black">{{ str_limit($jurnal['title'],50,'...') }}</h2>
-                                      <p>{{ str_limit($jurnal['abstract'],150,'...') }}</p>
-                                    </div>
-                                  </div>
-                                  <div class="col-md-12 panelBottom">
-                                    <!--div class="col-md-4">
-                                      <button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-shopping-cart"></span>   Add to Cart</button>
-                                    </div-->
-                                    <div class="col-md-4" style="margin-left:10px">
-                                      <div class="btn btn-success btn-xs"><a style="color:white" href="/publikasi/{{ $jurnal['id'] }}"><span class="glyphicon glyphicon glyphicon-zoom-in"></span>   See Details</a></div>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <div class="stars">
-                                       <div id="stars" class="starrr"></div>
-                                      </div>
-                                    </div>
-                                  </div>
+                                    <a href="/publikasi/{{ $jurnal['id'] }}"><h5 class="black">{{ str_limit($jurnal['title'],65,'...') }}</h5></a>
+                                    <p>{{ str_limit($jurnal['abstract'],150,'...') }}</p>
                                 </div>
                               </div>
                             </div>

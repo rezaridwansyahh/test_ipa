@@ -124,6 +124,7 @@
                                   <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Publications</a>
                                   <ul class="dropdown-menu">
                                       <li><a href="http://publication.ipa.or.id/publikasi"><div>Publication Database</div></a></li>
+                                      <li><a href="http://publication.ipa.or.id/convention"><div>Publication Convention 2017</div></a></li>
                                       <li><a href="http://publication.ipa.or.id/dvd"><div>Books and DVD's</div></a></li>
                                   </ul>
                               </li>
