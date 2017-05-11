@@ -101,10 +101,51 @@ class StandardPageController extends Controller
     }
   }
 
+  public function loginEvent(Request $request)
+  {
+    try {
+      $validator = Validator::make($request->all(), [
+        'email' => 'required|email|max:150',
+        'password' => 'required|min:3',
+      ]);
+
+      if ($validator->fails()) {
+        return redirect('/')->withErrors($validator);
+      }
+
+      $body = [
+        'email' => $request['email'],
+        'password' => $request['password'],
+      ];
+
+      $request = $this->client->request('POST', env('API_URL').'auth/event', ['json' => $body]);
+      $response = json_decode($request->getBody(), true);
+      $email = explode("@",$request['email']);
+
+      session([
+        'event_token' => $response['data']['event_token'],
+        'event_email' => $email[0]
+      ]);
+      return redirect(url()->previous());
+    }
+    catch (\GuzzleHttp\Exception\ClientException $e) {
+      $response = $e->getResponse();
+      $result = json_decode($response->getBody(), true);
+      $message = $result['message'];
+      return redirect('/')->with('flash_notification', ['message' => $message])->withInput();
+    }
+  }
+
   public function logout(Request $request)
   {
+    $evt_token = session()->get('event_token');
+    $evt_email = session()->get('event_email');
     $request->session()->flush();
     $request->session()->regenerate();
+    session([
+      'event_token' => $evt_token,
+      'event_email' => $evt_email
+    ]);
     return redirect('/');
   }
 }

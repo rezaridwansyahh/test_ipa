@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 Route::post('/','StandardPageController@login')->name('/');
 
+Route::get('/logout','StandardPageController@logout')->name('/logout');
 Route::post('/logout','StandardPageController@logout')->name('/logout');
 
 Route::get('/home','StandardPageController@index');

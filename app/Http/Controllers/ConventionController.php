@@ -11,6 +11,10 @@ class ConventionController extends Controller
     public function __construct()
     {
         parent::__construct();
+
+        if (!session()->has('event_token')) {
+            return redirect('login/event');
+        }
     }
     
     public function daftar()
