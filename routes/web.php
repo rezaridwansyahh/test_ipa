@@ -26,14 +26,22 @@ Route::post('/logout','StandardPageController@logout')->name('/logout');
 
 Route::get('/home','StandardPageController@index');
 
-Route::get('/publikasi','PublikasiController@daftar');
+Route::get('/convention','ConventionController@daftar');
+Route::get('/convention/download/{id}','ConventionController@download');
+Route::get('/convention/{id}','ConventionController@detail');
+Route::get('/ajax/convention/next','ConventionController@next');
+Route::get('/ajax/convention/prev','ConventionController@prev');
+Route::get('/ajax/convention/hal','ConventionController@hal');
 
-Route::post('/publikasi/download/event','PublikasiController@downloadevent');
-Route::get('/publikasi/download/{id}','PublikasiController@download');
-Route::get('/publikasi/{id}','PublikasiController@detail');
-Route::get('/ajax/publikasi/next','PublikasiController@next');
-Route::get('/ajax/publikasi/prev','PublikasiController@prev');
-Route::get('/ajax/publikasi/hal','PublikasiController@hal');
+Route::get('/publikasi','StandardPageController@construction');
+Route::post('/publikasi','StandardPageController@construction');
+// Route::get('/publikasi','PublikasiController@daftar');
+// Route::post('/publikasi/download/event','PublikasiController@downloadevent');
+// Route::get('/publikasi/download/{id}','PublikasiController@download');
+// Route::get('/publikasi/{id}','PublikasiController@detail');
+// Route::get('/ajax/publikasi/next','PublikasiController@next');
+// Route::get('/ajax/publikasi/prev','PublikasiController@prev');
+// Route::get('/ajax/publikasi/hal','PublikasiController@hal');
 
 Route::get('/detailpublikasi','StandardPageController@detailpublikasi');
 

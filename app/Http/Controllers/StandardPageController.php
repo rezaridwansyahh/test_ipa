@@ -18,6 +18,11 @@ class StandardPageController extends Controller
     return view('content.home');
   }
 
+  public function construction()
+  {
+    return view('content.construction');
+  }
+
   public function login(Request $request)
   {
     try {
