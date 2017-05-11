@@ -11,14 +11,27 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
 	if (!session()->has('access_token')) {
 		return view('content.signin');
 	}
 	else {
 		return redirect('/profil');
 	}
+});*/
+
+Route::get('/',function(){
+	return view('content.index');
 });
+
+Route::get('/signinmembership',function(){
+	return view('content.signinmembership');
+});
+
+Route::get('/signinmember',function(){
+	return view('content.signinmember');
+});
+
 
 Route::post('/','StandardPageController@login')->name('/');
 
