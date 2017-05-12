@@ -19,7 +19,7 @@
                             <article class="page type-page status-publish hentry">
                                     <div class="entry-content">
                                         <div class="woocommerce">
-                                            <form id=ipa-login action="{{ route('/') }}" class="checkout woocommerce-checkout" method="post" autocomplete="off">
+                                            <form id=ipa-login action="{{ route('/login-event') }}" class="checkout woocommerce-checkout" method="post" autocomplete="off">
                                                 {{ csrf_field() }}
                                                 <h1 align="center">CONVENTION LOGIN</h1>
                                                 <div class="row">

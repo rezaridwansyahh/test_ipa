@@ -175,7 +175,7 @@ class PublikasiController extends Controller
                     'code'=> $request->code
                 ]
             ]);
-            if($result->getStatusCode()==200);{
+            if($result->getStatusCode()==200){
                 $result = $this->client->post('download/event',[
                     'form_params' =>[
                         'id'=> $request->id,

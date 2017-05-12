@@ -106,7 +106,7 @@ class StandardPageController extends Controller
     try {
       $validator = Validator::make($request->all(), [
         'email' => 'required|email|max:150',
-        'password' => 'required|min:3',
+        'codenumber' => 'required|min:3',
       ]);
 
       if ($validator->fails()) {
@@ -115,18 +115,18 @@ class StandardPageController extends Controller
 
       $body = [
         'email' => $request['email'],
-        'password' => $request['password'],
+        'password' => $request['codenumber'],
       ];
+      $email = explode("@",$request['email']);
 
       $request = $this->client->request('POST', env('API_URL').'auth/event', ['json' => $body]);
       $response = json_decode($request->getBody(), true);
-      $email = explode("@",$request['email']);
 
       session([
-        'event_token' => $response['data']['event_token'],
+        'event_token' => $response['kunci-convex'],
         'event_email' => $email[0]
       ]);
-      return redirect(url()->previous());
+      return redirect('/convention');
     }
     catch (\GuzzleHttp\Exception\ClientException $e) {
       $response = $e->getResponse();
@@ -146,6 +146,22 @@ class StandardPageController extends Controller
       'event_token' => $evt_token,
       'event_email' => $evt_email
     ]);
+    return redirect('/');
+  }
+
+  public function logoutEvent(Request $request)
+  {
+    $info = array(
+        'access_token' => session()->get('access_token'),
+        'refresh_token' => session()->get('refresh_token'),
+        'id' => session()->get('id'),
+        'group_type' => session()->get('group_type'),
+        'email' => session()->get('email'),
+        'nama' => session()->get('nama')
+    );
+    $request->session()->flush();
+    $request->session()->regenerate();
+    session($info);
     return redirect('/');
   }
 }

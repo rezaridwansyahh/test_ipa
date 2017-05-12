@@ -24,12 +24,24 @@ Route::get('/',function(){
 	return view('content.index');
 });
 
-Route::get('/signinmembership',function(){
+Route::get('/login',function(){
 	return view('content.signinmembership');
 });
 
-Route::get('/signinmember',function(){
+Route::get('/convention/login',function(){
 	return view('content.signinmember');
+});
+Route::post('/convention/login','StandardPageController@loginEvent')->name('/login-event');
+
+Route::group(['middleware' => ['eventMiddle']], function () {
+	Route::get('/convention','ConventionController@cari');
+	Route::post('/convention','ConventionController@daftar')->name('/convention');
+	Route::get('/convention/download/{id}','ConventionController@download');
+	Route::get('/convention/{id}','ConventionController@detail');
+	Route::post('/ajax/convention/next','ConventionController@next');
+	Route::post('/ajax/convention/prev','ConventionController@prev');
+	Route::post('/ajax/convention/hal','ConventionController@hal');
+	Route::post('/logout/event','StandardPageController@logoutEvent')->name('/logout-event');
 });
 
 
@@ -39,13 +51,6 @@ Route::get('/logout','StandardPageController@logout')->name('/logout');
 Route::post('/logout','StandardPageController@logout')->name('/logout');
 
 Route::get('/home','StandardPageController@index');
-
-Route::get('/convention','ConventionController@daftar');
-Route::get('/convention/download/{id}','ConventionController@download');
-Route::get('/convention/{id}','ConventionController@detail');
-Route::get('/ajax/convention/next','ConventionController@next');
-Route::get('/ajax/convention/prev','ConventionController@prev');
-Route::get('/ajax/convention/hal','ConventionController@hal');
 
 Route::get('/publikasi','StandardPageController@construction');
 Route::post('/publikasi','StandardPageController@construction');

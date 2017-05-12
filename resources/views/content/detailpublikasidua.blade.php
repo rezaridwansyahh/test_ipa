@@ -1,6 +1,6 @@
 @extends('base')
 @section('title')
-  List Of Publication
+  {{ $title }}
 @endsection
 @section('bcrumb_title')
   Detail Publication
@@ -38,12 +38,7 @@
                     </div>
                     <div class="col-md-3">
                       <div class="post-right-content">
-                        @if($data['is_event']==0)
-                          <a href="/publikasi/download/{{ $data['id'] }}" class="btn btn-dark-gray">Download</a>
-                        @else
-                          <button data-toggle="modal" data-target="#login-event" class="btn btn-dark-gray">Download</button>
-                        @endif
-
+                          <a href="/convention/download/{{ $data['id'] }}" class="btn btn-dark-gray">Download</a>
                           {{-- <a href="#" data-toggle="modal" data-target="#login-modal">Login</a> --}}
                       </div>
                     </div>
@@ -62,23 +57,6 @@
           </div>
         </div>
       </div>
-  </div>
-
-  <div class="modal fade" id="login-event" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="loginmodal-container">
-          <h1>Login to Your Account</h1><br>
-          <p id="errormessage" align="center" style="font-weight: bold">
-          </p>
-          <form action="/publikasi/download/event" method="post">
-          {{ csrf_field() }}
-          <input type="hidden" name="id" value="{{ $data['id'] }}">
-          <input type="text" name="email" placeholder="Email">
-          <input type="password" name="code" placeholder="Code">
-          <input id="submit" type="submit" name="login" class="login loginmodal-submit" value="Login" />
-          </form>
-        </div>
-    </div>
   </div>
 
 @endsection
