@@ -21,7 +21,7 @@
                                 <div class="col-sm-6">
                                     <div class="topbar-info">
                                       @if (!session()->has('access_token'))
-                                      <a href="/"><i class="fa fa-lock"></i>Login / Register</a>
+                                      <a href="/login"><i class="fa fa-lock"></i>Login / Register</a>
                                       {{-- <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+61-3-8376-6284</a>
                                       <span>/</span>
                                       <a href="mailto:support@libraria.com"><i class="fa fa-envelope"></i>support@libraria.com</a> --}}

@@ -11,16 +11,26 @@
 |
 */
 
-Route::get('/',function(){
+Route::get('/',function() {
 	return view('content.index');
 });
 
-Route::get('/login',function(){
-	return view('content.signinmembership');
+Route::get('/login',function() {
+	if (session()->has('access_token')) {
+		return redirect('/profil');
+	}
+	else {
+		return view('content.signinmembership');
+	}
 });
 
 Route::get('/convention/login',function(){
-	return view('content.signinmember');
+	if (session()->has('event_token')) {
+		return redirect('/convention');
+	}
+	else {
+		return view('content.signinmember');
+	}
 });
 
 Route::post('/convention/login','StandardPageController@loginEvent')->name('/login-event');
