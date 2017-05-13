@@ -11,14 +11,31 @@
 |
 */
 
-Route::get('/', function () {
-	if (!session()->has('access_token')) {
-		return view('content.signin');
-	}
-	else {
-		return redirect('/profil');
-	}
+Route::get('/',function(){
+	return view('content.index');
 });
+
+Route::get('/login',function(){
+	return view('content.signinmembership');
+});
+
+Route::get('/convention/login',function(){
+	return view('content.signinmember');
+});
+
+Route::post('/convention/login','StandardPageController@loginEvent')->name('/login-event');
+
+Route::group(['middleware' => ['eventMiddle']], function () {
+	Route::get('/convention','ConventionController@cari');
+	Route::post('/convention','ConventionController@daftar')->name('/convention');
+	Route::get('/convention/download/{id}','ConventionController@download');
+	Route::get('/convention/{id}','ConventionController@detail');
+	Route::post('/ajax/convention/next','ConventionController@next');
+	Route::post('/ajax/convention/prev','ConventionController@prev');
+	Route::post('/ajax/convention/hal','ConventionController@hal');
+	Route::post('/logout/event','StandardPageController@logoutEvent')->name('/logout-event');
+});
+
 
 Route::post('/','StandardPageController@login')->name('/');
 
@@ -31,6 +48,18 @@ Route::get('/publikasi','PublikasiController@daftar');
 Route::post('/publikasi/download/{filename}','PublikasiController@download');
 
 Route::get('/publikasi/{id}','PublikasiController@detail');
+
+Route::get('/publikasi','StandardPageController@construction');
+
+Route::post('/publikasi','StandardPageController@construction');
+
+// Route::get('/publikasi','PublikasiController@daftar');
+// Route::post('/publikasi/download/event','PublikasiController@downloadevent');
+// Route::get('/publikasi/download/{id}','PublikasiController@download');
+// Route::get('/publikasi/{id}','PublikasiController@detail');
+// Route::get('/ajax/publikasi/next','PublikasiController@next');
+// Route::get('/ajax/publikasi/prev','PublikasiController@prev');
+// Route::get('/ajax/publikasi/hal','PublikasiController@hal');
 
 Route::get('/detailpublikasi','StandardPageController@detailpublikasi');
 

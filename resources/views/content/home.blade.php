@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-  Isi Sama Title
+  Under Construction
 @endsection
 @section('slider')
   @include('layout.slider')

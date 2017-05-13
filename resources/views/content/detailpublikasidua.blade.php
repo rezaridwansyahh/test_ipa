@@ -34,9 +34,6 @@
                           <p><strong>Conference Name:</strong> {{ $data['conference_name'] }}</p>
                           <p><strong>Place:</strong> {{ $data['place'] }}</p>
                           <p><strong>Publisher:</strong> {{ $data['publisher'] }}</p>
-                          <p><strong>Volume:</strong> {{ $data['volume'] }}</p>
-                          <p><strong>Page:</strong> {{ $data['pages'] }}</p>
-                          <p><strong>Series:</strong> {{ $data['series'] }}</p>
                           <p><strong>Language:</strong> {{ $data['language'] }}</p>
                           <p><strong>ISBN:</strong> {{ $data['isbn'] }}</p>
                       </div>
@@ -50,6 +47,8 @@
                           @else
                             <a href="{{ route('/')}}" class="btn btn-dark-gray">Download</a>
                           @endif
+                        @else
+                          <a href="/convention/download/{{ $data['id'] }}" class="btn btn-dark-gray">Download</a>
                         @endif
                         {{--<a href="#" data-toggle="modal" data-target="#login-modal">Login</a>--}}
                       </div>
@@ -58,8 +57,14 @@
                   <div class="clearfix"></div>
               </div>
               <div class="clearfix"></div>
-              <p><strong>Abstract:</strong> 
+              <div class="col-md-12" style="margin-bottom:40px;">
+              <div class="col-md-12">
+              <div class="col-md-12">
+              <p style="text-align:justify"><strong>Abstract:</strong> 
               {{ $data['abstract'] }} </p>
+              </div>
+              </div>
+              </div>
           </div>
         </div>
       </div>

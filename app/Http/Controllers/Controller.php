@@ -16,9 +16,11 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     protected $client;
+    protected $client1;
 
     public function __construct()
     {
     	$this->client = new Client(['base_uri' => env('API_URL')]);
+    	$this->client1 = new Client();
     }
 }

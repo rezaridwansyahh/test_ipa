@@ -26,7 +26,7 @@
                                       <span>/</span>
                                       <a href="mailto:support@libraria.com"><i class="fa fa-envelope"></i>support@libraria.com</a> --}}
                                       @else
-                                      <a href="javascript:void(0);"><i class="fa fa-lock"></i>Welcome, {{ session()->get('email') }}</a>
+                                      <a href="javascript:void(0);"><i class="fa fa-lock"></i>Welcome, {{ session()->get('nama') }}</a>
                                       @endif
                                     </div>
                                 </div>
@@ -123,7 +123,8 @@
                               <li class="dropdown">
                                   <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Publications</a>
                                   <ul class="dropdown-menu">
-                                      <li><a href="http://publication.ipa.or.id/publication"><div>Publication Database</div></a></li>
+                                      <li><a href="http://publication.ipa.or.id/publikasi"><div>Publication Database</div></a></li>
+                                      <li><a href="http://publication.ipa.or.id/convention"><div>Publication Convention 2017</div></a></li>
                                       <li><a href="http://publication.ipa.or.id/dvd"><div>Books and DVD's</div></a></li>
                                   </ul>
                               </li>

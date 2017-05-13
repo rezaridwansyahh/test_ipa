@@ -1,28 +1,7 @@
-@extends('base')
-@section('title')
-  {{ $title }}
-@endsection
-@section('bcrumb_title')
-  Publications
-@endsection
-@section('slider')
-  @include('layout.banner')
-@endsection
 
-@section('content')
-      <div class="books-media-list">
-          <div class="container">
-              <div class="row">
-                  <!-- Start: Search Section -->
-                  <!-- @include('layout.search') -->
-                  <!-- End: Search Section -->
-              </div>
-              <div class="row">
-                  <div class="col-md-9 col-md-push-3" id="daftar_buku">
                       <div class="filter-options margin-list">
                           <div class="row">
-                              {{--
-                              <div class="col-md-4 col-sm-4">
+                              <!--div class="col-md-4 col-sm-4">
                                   <select name="orderby">
                                       <option selected="selected">Default sorting</option>
                                       <option>Sort by popularity</option>
@@ -30,8 +9,7 @@
                                       <option>Sort by newness</option>
                                       <option>Sort by price</option>
                                   </select>
-                              </div>
-                              --}}
+                              </div-->
                               <div class="col-md-4 col-sm-4">
                                   <div class="filter-result">Showing items {{ $data['from'] }} to {{ $data['to'] }} of {{ $data['total'] }} total</div>
                               </div>
@@ -77,62 +55,3 @@
                               <div class="next page-numbers">Next <i class="fa fa-long-arrow-right"></i></div>
                           </div>
                       </nav>
-                  </div>
-              </div>
-          </div>
-          <!-- Start: Staff Picks -->
-          <section class="">
-          </section>
-          <!-- End: Staff Picks -->
-      </div>
-@endsection
-@section('js_more')
-  <script>
-    function pagination(){
-      window.scrollTo(0,0);
-      $(".next.page-numbers").click(function(){
-        $.ajax({
-          type:"POST",
-          url:"/ajax/publikasi/next",
-          success:function(msg){
-            $('#daftar_buku').html(msg);
-            pagination();
-          },
-          error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status);
-            console.log(thrownError);
-          }
-        });
-      });
-      $(".prev.page-numbers").click(function(){
-        $.ajax({
-          type:"POST",
-          url:"/ajax/publikasi/prev",
-          success:function(msg){
-            $('#daftar_buku').html(msg);
-            pagination();
-          }
-        });
-      });
-      $(".hal.page-numbers").click(function(){
-        hal = $(this).html();
-        $.ajax({
-          type:"POST",
-          url:"/ajax/publikasi/hal",
-          data:"id="+hal,
-          success:function(msg){
-            $('#daftar_buku').html(msg);
-            pagination();
-          },
-          error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status);
-            console.log(thrownError);
-          }
-        });
-      });
-    }
-    $(function(){
-      pagination();
-    });
-  </script>
-@endsection

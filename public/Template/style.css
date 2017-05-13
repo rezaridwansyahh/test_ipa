@@ -7654,7 +7654,6 @@ h4,
 h5,
 h6 {
   font-family: "Lato", Georgia, Times, serif;
-  text-transform: uppercase;
 }
 h3,
 h4,
@@ -7683,7 +7682,7 @@ h2 {
   }
 }
 p {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   font-size: 14px;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
