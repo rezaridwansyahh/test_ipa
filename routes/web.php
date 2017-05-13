@@ -22,11 +22,13 @@ Route::get('/', function () {
 
 Route::post('/','StandardPageController@login')->name('/');
 
-Route::post('/logout','StandardPageController@logout')->name('/logout');
+Route::post('/logout','StandardPageController@logout')->name('logout');
 
 Route::get('/home','StandardPageController@index');
 
 Route::get('/publikasi','PublikasiController@daftar');
+
+Route::post('/publikasi/download/{filename}','PublikasiController@download');
 
 Route::get('/publikasi/{id}','PublikasiController@detail');
 

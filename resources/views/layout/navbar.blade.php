@@ -33,8 +33,8 @@
                                 <div class="col-sm-6">
                                     <div class="topbar-links">
                                         @if (session()->has('access_token'))
-                                        <a href="{{ route('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>, 
-                                        <form id="logout-form" action="{{ route('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                                        <a href="javascript:void(0);" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>, 
+                                        <form id="logout-form" action="{{ route('logout') }}" method="post" style="display:none;">{{ csrf_field() }}</form>
                                         <SPAN>|</SPAN>
                                         @endif
                                         <a href="javascript:void(0);">EN</a>

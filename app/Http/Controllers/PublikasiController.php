@@ -48,4 +48,18 @@ class PublikasiController extends Controller
             return $e->getCode() . ', ' . $e->getMessage();
         }
     }
+
+    public function download($filename)
+    {
+        try {
+            $request = file_get_contents(env('API_URL').'publication/download/'.$filename);
+            return redirect($request);
+        }
+        catch (\GuzzleHttp\Exception\ClientException $e) {
+          $response = $e->getResponse();
+          $result = json_decode($response->getBody(), true);
+          $message = $result['message'];
+          return $result;
+        }
+    }
 }

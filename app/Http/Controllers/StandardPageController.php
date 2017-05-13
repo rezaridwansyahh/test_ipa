@@ -80,25 +80,42 @@ class StandardPageController extends Controller
   public function profil()
   {
     if (session()->has('access_token')) {
-      $request = $this->client->request('GET', env('API_URL').'auth/me', [
-        'headers' => [
-          'Authorization' => 'Bearer '.session()->get('access_token'),
-          'Accept'     => 'application/json'
-        ]
-      ]);
-      $response = json_decode($request->getBody(), true);
+      try {
+        $request = $this->client->request('GET', env('API_URL').'auth/me', [
+          'headers' => [
+            'Authorization' => 'Bearer '.session()->get('access_token'),
+            'Accept'     => 'application/json'
+          ]
+        ]);
+        $response = json_decode($request->getBody(), true);
 
-      return view('content.profil')->with('data', $response);
+        return view('content.profil')->with('data', $response['data']);
+      }
+      catch (\GuzzleHttp\Exception\ClientException $e) {
+        $response = $e->getResponse();
+        $result = json_decode($response->getBody(), true);
+        $message = $result['message'];
+
+        return $message;
+      }
     }
     else {
       return redirect('/');
     }
   }
 
-  public function logout(Request $request)
+  public function logout()
   {
-    $request->session()->flush();
-    $request->session()->regenerate();
+    $this->client->request('POST', env('API_URL').'auth/logout', [
+      'headers' => [
+        'Authorization' => 'Bearer '.session()->get('access_token'),
+        'Content-Type' => 'application/json'
+      ]
+    ]);
+
+    session()->flush();
+    session()->regenerate();
+
     return redirect('/');
   }
 }
