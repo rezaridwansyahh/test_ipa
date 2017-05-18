@@ -20,7 +20,7 @@ class PublikasiController extends Controller
             $result = $response->getBody();
             $data = json_decode($result, true);
 
-            if($data['success']){
+            if ($data['success']) {
                 $data = $data['data'];
                 session([
                     'prev' => $data['prev_page_url'],
@@ -30,10 +30,11 @@ class PublikasiController extends Controller
 
                 return view('content.publikasi', compact('data'));
             }
-            else{
+            else {
                 return $data['message'];
             }
-        } catch (BadResponseException $e) {
+        } 
+        catch (BadResponseException $e) {
             return $e->getCode() . ', ' . $e->getMessage();
         }
     }
@@ -46,7 +47,7 @@ class PublikasiController extends Controller
             $result = $response->getBody();
             $data = json_decode($result, true);
 
-            if($data['success']){
+            if ($data['success']) {
                 $data = $data['data'];
                 session([
                     'prev' => $data['prev_page_url'],
@@ -56,10 +57,11 @@ class PublikasiController extends Controller
 
                 return view('ajax.publikasi', compact('data'));
             }
-            else{
+            else {
                 return $data['message'];
             }
-        } catch (BadResponseException $e) {
+        } 
+        catch (BadResponseException $e) {
             return $e->getCode() . ', ' . $e->getMessage();
         }
     }
@@ -72,7 +74,7 @@ class PublikasiController extends Controller
             $result = $response->getBody();
             $data = json_decode($result, true);
 
-            if($data['success']){
+            if ($data['success']) {
                 $data = $data['data'];
                 session([
                     'prev' => $data['prev_page_url'],
@@ -82,10 +84,11 @@ class PublikasiController extends Controller
 
                 return view('ajax.publikasi', compact('data'));
             }
-            else{
+            else {
                 return $data['message'];
             }
-        } catch (BadResponseException $e) {
+        } 
+        catch (BadResponseException $e) {
             return $e->getCode() . ', ' . $e->getMessage();
         }
     }
@@ -99,7 +102,7 @@ class PublikasiController extends Controller
             $result = $response->getBody();
             $data = json_decode($result, true);
 
-            if($data['success']){
+            if ($data['success']) {
                 $data = $data['data'];
                 session([
                     'prev' => $data['prev_page_url'],
@@ -109,10 +112,11 @@ class PublikasiController extends Controller
 
                 return view('ajax.publikasi', compact('data'));
             }
-            else{
+            else {
                 return $data['message'];
             }
-        } catch (BadResponseException $e) {
+        } 
+        catch (BadResponseException $e) {
             return $e->getCode() . ', ' . $e->getMessage();
         }
     }
@@ -123,25 +127,27 @@ class PublikasiController extends Controller
             $response = $this->client->request('GET', 'publication/'.$id);
             $result = $response->getBody();
             $data = json_decode($result, true);
-            if($data['success']){
+            
+            if ($data['success']) {
                 $data = $data['data'];
 
                 return view('content.detailpublikasidua', compact('data'));
             }
-            else{
+            else {
                 return $data['message'];
             }
-        } catch (BadResponseException $e) {
+        } 
+        catch (BadResponseException $e) {
             return $e->getCode() . ', ' . $e->getMessage();
         }
     }
 
     public function download($id)
     {
-        if(!session()->has('access_token')){
+        if (!session()->has('access_token')) {
             return redirect('http://publication.ipa.or.id');
         }
-        try{
+        try {
             $filename = "Jurnal IPA-".$id.".pdf";
             $tempImage = tempnam(sys_get_temp_dir(), $filename);
             $resource = fopen($tempImage, 'w');
@@ -156,14 +162,15 @@ class PublikasiController extends Controller
                 'save_to' => $stream
             ]);
             return response()->download($tempImage,$filename);
-        } catch (BadResponseException $e) {
+        } 
+        catch (BadResponseException $e) {
             return $e->getCode() . ', ' . $e->getMessage();
         }
     }
 
     public function downloadevent(Request $request)
     {
-        try{
+        try {
             $id = $request->id;
             $filename = "Jurnal IPA-".$id.".pdf";
             $tempImage = tempnam(sys_get_temp_dir(), $filename);
@@ -175,7 +182,8 @@ class PublikasiController extends Controller
                     'code'=> $request->code
                 ]
             ]);
-            if($result->getStatusCode()==200){
+            
+            if ($result->getStatusCode()==200) {
                 $result = $this->client->post('download/event',[
                     'form_params' =>[
                         'id'=> $request->id,
@@ -186,7 +194,8 @@ class PublikasiController extends Controller
                 ]);
                 return response()->download($tempImage,$filename);
             }
-        }catch (BadResponseException $e) {
+        }
+        catch (BadResponseException $e) {
             // return $e->getCode() . ', ' . $e->getMessage();
             return $e->getCode();
         }

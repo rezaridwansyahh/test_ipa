@@ -90,15 +90,24 @@ class StandardPageController extends Controller
   public function profil()
   {
     if (session()->has('access_token')) {
-      $request = $this->client->request('GET', env('API_URL').'auth/me', [
-        'headers' => [
-          'Authorization' => 'Bearer '.session()->get('access_token'),
-          'Accept'     => 'application/json'
-        ]
-      ]);
-      $response = json_decode($request->getBody(), true);
+      try {
+        $request = $this->client->request('GET', env('API_URL').'auth/me', [
+          'headers' => [
+            'Authorization' => 'Bearer '.session()->get('access_token'),
+            'Accept'     => 'application/json'
+          ]
+        ]);
+        $response = json_decode($request->getBody(), true);
 
-      return view('content.profil')->with('data', $response);
+        return view('content.profil')->with('data', $response['data']);
+      }
+      catch (\GuzzleHttp\Exception\ClientException $e) {
+        $response = $e->getResponse();
+        $result = json_decode($response->getBody(), true);
+        $message = $result['message'];
+
+        return $message;
+      }
     }
     else {
       return redirect('/');
@@ -141,30 +150,41 @@ class StandardPageController extends Controller
 
   public function logout(Request $request)
   {
+    $this->client->request('POST', env('API_URL').'auth/logout', [
+      'headers' => [
+        'Authorization' => 'Bearer '.session()->get('access_token')
+      ]
+    ]);
+
     $evt_token = session()->get('event_token');
     $evt_email = session()->get('event_email');
+    
     $request->session()->flush();
     $request->session()->regenerate();
+    
     session([
       'event_token' => $evt_token,
       'event_email' => $evt_email
     ]);
+    
     return redirect('/');
   }
 
   public function logoutEvent(Request $request)
   {
     $info = array(
-        'access_token' => session()->get('access_token'),
-        'refresh_token' => session()->get('refresh_token'),
-        'id' => session()->get('id'),
-        'group_type' => session()->get('group_type'),
-        'email' => session()->get('email'),
-        'nama' => session()->get('nama')
+      'access_token' => session()->get('access_token'),
+      'refresh_token' => session()->get('refresh_token'),
+      'id' => session()->get('id'),
+      'group_type' => session()->get('group_type'),
+      'email' => session()->get('email'),
+      'nama' => session()->get('nama')
     );
+    
     $request->session()->flush();
     $request->session()->regenerate();
     session($info);
+
     return redirect('/');
   }
 

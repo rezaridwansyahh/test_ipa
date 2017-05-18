@@ -21,7 +21,8 @@
                   <div class="col-md-9 col-md-push-3" id="daftar_buku">
                       <div class="filter-options margin-list">
                           <div class="row">
-                              <!--div class="col-md-4 col-sm-4">
+                              {{--
+                              <div class="col-md-4 col-sm-4">
                                   <select name="orderby">
                                       <option selected="selected">Default sorting</option>
                                       <option>Sort by popularity</option>
@@ -29,7 +30,8 @@
                                       <option>Sort by newness</option>
                                       <option>Sort by price</option>
                                   </select>
-                              </div-->
+                              </div>
+                              --}}
                               <div class="col-md-4 col-sm-4">
                                   <div class="filter-result">Showing items {{ $data['from'] }} to {{ $data['to'] }} of {{ $data['total'] }} total</div>
                               </div>

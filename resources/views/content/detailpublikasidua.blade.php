@@ -1,6 +1,6 @@
 @extends('base')
 @section('title')
-  {{ $title }}
+  {{ $data['title'] }}
 @endsection
 @section('bcrumb_title')
   Detail Publication
@@ -17,12 +17,14 @@
         <div class="row">
           <div class="booksmedia-detail-box">
               <div class="detailed-box">
-                  {{-- <div class="col-xs-12 col-sm-5 col-md-3">
+                  {{-- 
+                  <div class="col-xs-12 col-sm-5 col-md-3">
                       <div class="post-thumbnail">
                           <div class="book-list-icon blue-icon"></div>
                           <img src="template/images/books-media/detail-page/300x454.jpg" alt="Book Image">
                       </div>
-                  </div> --}}
+                  </div> 
+                  --}}
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="col-md-9">
                       <div class="post-center-content">
@@ -38,8 +40,17 @@
                     </div>
                     <div class="col-md-3">
                       <div class="post-right-content">
+                        @if($data['is_event']!=1)
+                          @if (session()->has('access_token'))
+                            <a href="javascript:void(0);" class="btn btn-dark-gray" onclick="event.preventDefault(); document.getElementById('download-form').submit();">Download</a>
+                            <form id="download-form" action="{{ url('publikasi/download/'.base64_encode($data['pdf'])) }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                          @else
+                            <a href="{{ route('/')}}" class="btn btn-dark-gray">Download</a>
+                          @endif
+                        @else
                           <a href="/convention/download/{{ $data['id'] }}" class="btn btn-dark-gray">Download</a>
-                          {{-- <a href="#" data-toggle="modal" data-target="#login-modal">Login</a> --}}
+                        @endif
+                        {{--<a href="#" data-toggle="modal" data-target="#login-modal">Login</a>--}}
                       </div>
                     </div>
                   </div>
@@ -58,5 +69,4 @@
         </div>
       </div>
   </div>
-
 @endsection
