@@ -21,7 +21,7 @@
 });*/
 
 Route::get('/',function(){
-	return view('content.index');
+	return view('convention.index');
 });
 
 Route::get('/login',function(){
@@ -32,7 +32,6 @@ Route::get('/convention/login',function(){
 	return view('content.signinmember');
 });
 Route::post('/convention/login','StandardPageController@loginEvent')->name('/login-event');
-
 Route::group(['middleware' => ['eventMiddle']], function () {
 	Route::get('/convention','ConventionController@cari');
 	Route::post('/convention','ConventionController@daftar')->name('/convention');
@@ -41,12 +40,19 @@ Route::group(['middleware' => ['eventMiddle']], function () {
 	Route::post('/ajax/convention/next','ConventionController@next');
 	Route::post('/ajax/convention/prev','ConventionController@prev');
 	Route::post('/ajax/convention/hal','ConventionController@hal');
+	Route::post('/convention/download','ConventionController@downloadAll')->name('/download-allevent');
 	Route::post('/logout/event','StandardPageController@logoutEvent')->name('/logout-event');
+});
+
+Route::group(['middleware' => ['adminMiddle'],'prefix'=>'event'], function () {
+	Route::get('/','StandardPageController@formCariUser');
+	Route::post('/','StandardPageController@searchUser')->name('/cari-user');
+	Route::post('/email','StandardPageController@addEmail')->name('/update-email');;
 });
 
 
 Route::post('/','StandardPageController@login')->name('/');
-
+Route::get('/dvd','StandardPageController@construction');
 Route::get('/logout','StandardPageController@logout')->name('/logout');
 Route::post('/logout','StandardPageController@logout')->name('/logout');
 

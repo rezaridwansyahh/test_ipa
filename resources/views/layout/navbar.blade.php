@@ -7,7 +7,7 @@
                         <div class="navbar-header">
                             <div class="navbar-brand">
                                 <h1>
-                                    <a href="index.html">
+                                    <a href="http://ipa.or.id">
                                         <img src="/template/images/logo_white-alt.png" alt="Indonesia Petroleum Association" />
                                     </a>
                                 </h1>
@@ -21,7 +21,7 @@
                                 <div class="col-sm-6">
                                     <div class="topbar-info">
                                       @if (!session()->has('access_token'))
-                                      <a href="/"><i class="fa fa-lock"></i>Login / Register</a>
+                                      <a href="/login"><i class="fa fa-lock"></i>Login / Register</a>
                                       {{-- <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+61-3-8376-6284</a>
                                       <span>/</span>
                                       <a href="mailto:support@libraria.com"><i class="fa fa-envelope"></i>support@libraria.com</a> --}}
@@ -37,7 +37,7 @@
                                         <form id="logout-form" action="{{ route('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                                         <SPAN>|</SPAN>
                                         @endif
-                                        <a href="javascript:void(0);">EN</a>
+                                        {{-- <a href="javascript:void(0);">EN</a>
                                         <SPAN>|</SPAN>
                                         <a href="javascript:void(0);">ID</a>
                                         <span>|</span>
@@ -91,7 +91,7 @@
                                                     <a href="checkout.html" class="btn btn-primary">Checkout</a>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

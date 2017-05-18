@@ -33,7 +33,9 @@
                       <nav class="navigation pagination text-center">
                           <h2 class="screen-reader-text">Posts navigation</h2>
                           <div class="nav-links">
+                              @if(!empty($data['prev_url']))
                               <div class="prev page-numbers"><i class="fa fa-long-arrow-left"></i> Previous</div>
+                              @endif
                               @if($data['current_page'] > 1)
                                 @if($data['current_page']-2 >= 1)
                                   <div class="page-numbers hal">{{ $data['current_page']-2 }}</div>
@@ -51,6 +53,8 @@
                                   <div class="page-numbers hal">{{ $data['current_page']+2 }}</div>
                                 @endif
                               @endif
+                              @if(!empty($data['next_url']))
                               <div class="next page-numbers">Next <i class="fa fa-long-arrow-right"></i></div>
+                              @endif
                           </div>
                       </nav>

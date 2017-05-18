@@ -51,8 +51,12 @@ class StandardPageController extends Controller
         'email' => $response['data']['profile']['email'],
         'nama' => $response['data']['profile']['name'].' '.$response['data']['profile']['last_name']
       ]);
-
-      return redirect(url()->previous());
+      if($response['data']['profile']['group_type']==3){
+        return redirect('/publikasi');
+      }
+      else{
+        return redirect('/event');
+      }
     }
     catch (\GuzzleHttp\Exception\ClientException $e) {
       $response = $e->getResponse();
@@ -121,10 +125,9 @@ class StandardPageController extends Controller
 
       $request = $this->client->request('POST', env('API_URL').'auth/event', ['json' => $body]);
       $response = json_decode($request->getBody(), true);
-
       session([
         'event_token' => $response['kunci-convex'],
-        'event_email' => $email[0]
+        'event_email' => $response['data']['firstname'].' '.$response['data']['lastname']
       ]);
       return redirect('/convention');
     }
@@ -163,5 +166,54 @@ class StandardPageController extends Controller
     $request->session()->regenerate();
     session($info);
     return redirect('/');
+  }
+
+  public function searchUser(Request $request)
+  {
+        try {
+            $result = $this->client->post('user/event',[
+                'headers' => [
+                    'Authorization' => 'Bearer ' . session()->get('access_token')
+                ],
+                'form_params' =>[
+                    'code'=> $request['code']
+                ]
+            ]);
+            $result = $result->getBody();
+            $data = json_decode($result, true);
+            if($data['success']){
+                $data = $data['user'];
+                return view('event.detail', compact('data'));
+            }
+            else{
+                return redirect("/event")->with("pesan",$data['message']);
+            }
+        } catch (BadResponseException $e) {
+            return redirect("/event")->with("pesan",$e->getMessage());
+        }
+  }
+
+  public function formCariUser(){
+    return view('event.cari');
+  }
+
+  public function addEmail(Request $request)
+  {
+        try {
+            $result = $this->client->post('user/update',[
+                'headers' => [
+                    'Authorization' => 'Bearer ' . session()->get('access_token')
+                ],
+                'form_params' =>[
+                    'code'=> $request['code'],
+                    'email'=> $request['email']
+                ]
+            ]);
+            $result = $result->getBody();
+            $data = json_decode($result, true);
+            return redirect("/event")->with("pesan",$data['message']);
+        } catch (BadResponseException $e) {
+            return redirect("/event")->with("pesan",$e->getMessage());
+        }
   }
 }

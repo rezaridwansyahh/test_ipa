@@ -2,6 +2,9 @@
 @section('title')
   List of Convention Publication {{ date("Y") }}
 @endsection
+@section('bcrumb_title')
+  <a href="http://publication.ipa.or.id/convention">Convention Search</a>
+@endsection
 @section('slider')
   @include('layout.banner')
 @endsection
@@ -34,9 +37,6 @@
                                                 <h2>{{ $data['title'] }}</h2>
                                                 <p><strong>Author:</strong> {{ $data['authors'] }}</p>
                                                 <p><strong>Proceeding Title:</strong> {{ $data['proceeding_title'] }}</p>
-                                                <p><strong>Conference Name:</strong> {{ $data['conference_name'] }}</p>
-                                                <p><strong>Place:</strong> {{ $data['place'] }}</p>
-                                                <p><strong>Publisher:</strong> {{ $data['publisher'] }}</p>
                                                 <p><strong>Language:</strong> {{ $data['language'] }}</p>
                                                 <p><strong>ISBN:</strong> {{ $data['isbn'] }}</p>
                                             </div>

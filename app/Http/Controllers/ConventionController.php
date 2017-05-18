@@ -221,4 +221,13 @@ class ConventionController extends Controller
             // return $e->getCode() . ', ' . $e->getMessage();
         }
     }
+
+    public function downloadAll()
+    {
+        if(!session()->has('event_token')){
+            return redirect('/event/login');
+        }
+        $path = storage_path("app/public/all_pdf.zip");
+        return response()->download($path,"List of IPA Publication ".date("Y").".zip");
+    }
 }

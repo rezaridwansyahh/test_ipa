@@ -2,6 +2,9 @@
 @section('title')
   List of Convention Publication {{ date("Y") }}
 @endsection
+@section('bcrumb_title')
+  <a href="http://publication.ipa.or.id/convention">Convention Search</a>
+@endsection
 @section('slider')
   @include('layout.banner')
 @endsection
@@ -44,15 +47,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label class="col-sm-2 control-label">ISBN</label>
                                         <div class="col-sm-10">
                                         <input type="text" name="isbn" class="form-control" placeholder="ISBN">
                                         </div>
                                     </div>
 
-
-                                    {{-- <div class="form-group">
+                                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Year</label>
                                         <div class="col-sm-4">
                                         <input type="text" name="year_start" class="form-control" placeholder="Year">
@@ -63,17 +65,17 @@
                                         <div class="col-sm-4">
                                         <input type="text" name="year_end" class="form-control" placeholder="Year">
                                         </div>
-                                    </div> --}}
+                                    </div>
 
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Keyword</label>
                                         <div class="col-sm-10">
                                         <input type="text" name="keyword" class="form-control" placeholder="Keyword">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-default">Cari</button>
+                                        <button type="submit" class="btn btn-default">Search</button>
                                         </div>
                                     </div>
                                 </form>
