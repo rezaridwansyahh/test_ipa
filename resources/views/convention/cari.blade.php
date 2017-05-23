@@ -36,7 +36,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Author</label>
                                         <div class="col-sm-10">
-                                        <input type="text" name="author" class="form-control" placeholder="Author">
+                                        <input type="text" name="authors" class="form-control" placeholder="Author">
                                         </div>
                                     </div>
 
