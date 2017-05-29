@@ -12,6 +12,10 @@ class PublikasiController extends Controller
     {
         parent::__construct();
     }
+
+    public function cari(){
+        return view('publication.cari');
+    }
     
     public function daftar()
     {
@@ -200,4 +204,57 @@ class PublikasiController extends Controller
             return $e->getCode();
         }
     }
+
+       public function list(Request $request)
+        {
+            $filter = $request->except("_token");
+            $search = "";
+            $field = "";
+            foreach($filter as $key => $val){
+                if(!empty($val)){
+                    if(empty($search)){
+                        $search.= $key.":".$val;
+                        $field.= $key.":like";
+                    }
+                    else{
+                        $search.= ";".$key.":".$val;
+                        $field.= ";".$key.":like";
+                    }
+                }
+            }
+            $query = array(
+                'search' => $search,
+                'searchFields' => $field
+            );
+            try {
+                $response = $this->client->get('publication_new',[
+                    'headers' => [
+                        'kunci-event' => session()->get('event_token')
+                    ],
+                    'query' => $query
+                ]);
+                $result = $response->getBody();
+                // return $result;
+                $data = json_decode($result, true);
+
+                if($data['success']){
+                    $data = $data['data'];
+                    session([
+                        'prev' => $data['prev_page_url'],
+                        'next' => $data['next_page_url'],
+                        'query' => $query,
+                        'page' => env('API_URL').'event'
+                    ]);
+                    $data['title'] = "List of Convention Publication".date("Y");
+
+                    return view('convention.list', compact('data'));
+                }
+                else{
+                    return $data['message'];
+                }
+            } catch (BadResponseException $e) {
+                return app('App\Http\Controllers\StandardPageController')->logoutEvent($request);
+                // return redirect("/convention")->with("pesan",$e->getMessage());
+            }
+        }
 }

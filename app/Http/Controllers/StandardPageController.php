@@ -236,4 +236,23 @@ class StandardPageController extends Controller
             return redirect("/event")->with("pesan",$e->getMessage());
         }
   }
+
+
+  /*My code here : 13:02, 23-Mei 2017. rr*/
+
+  public function studentForm(){
+    return view('form.student');
+  }
+
+  public function individualForm(){
+    return view('form.individual');
+  }
+
+  public function companyForm(){
+    return view('form.company');
+  }
+
+  public function associateForm(){
+    return view('form.associate');
+  }
 }

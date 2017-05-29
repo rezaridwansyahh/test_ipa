@@ -53,6 +53,8 @@ Route::group(['middleware' => ['eventMiddle']], function () {
 	Route::post('/ajax/convention/hal','ConventionController@hal');
 	Route::post('/convention/download','ConventionController@downloadAll')->name('/download-allevent');
 	Route::post('/logout/event','StandardPageController@logoutEvent')->name('/logout-event');
+	Route::get('/publikasi','PublikasiController@cari');
+	Route::post('/publikasi','PublikasiController@list');
 });
 
 Route::group(['middleware' => ['adminMiddle'],'prefix'=>'event'], function () {
@@ -69,15 +71,17 @@ Route::post('/logout','StandardPageController@logout')->name('/logout');
 
 Route::get('/home','StandardPageController@index');
 
-Route::get('/publikasi','PublikasiController@daftar');
+/*Ini yang asli. kalo mau balikin un comment yang bawah aja*/
+//Route::get('/publikasi','PublikasiController@daftar');
+
 
 Route::post('/publikasi/download/{filename}','PublikasiController@download');
 
 Route::get('/publikasi/{id}','PublikasiController@detail');
 
-Route::get('/publikasi','StandardPageController@construction');
+// Route::get('/publikasi','StandardPageController@construction');
 
-Route::post('/publikasi','StandardPageController@construction');
+// Route::post('/publikasi','StandardPageController@construction');
 
 // Route::get('/publikasi','PublikasiController@daftar');
 // Route::post('/publikasi/download/event','PublikasiController@downloadevent');
@@ -94,3 +98,10 @@ Route::get('/detailpublikasidua','StandardPageController@detailpublikasidua');
 Route::get('/detailpublikasitiga','StandardPageController@detailpublikasitiga');
 
 Route::get('/profil','StandardPageController@profil');
+
+Route::group(['prefix' => 'form'], function () {
+    Route::get('/student','StandardPageController@studentForm');
+    Route::get('/individual','StandardPageController@individualForm');
+    Route::get('/company','StandardPageController@companyForm');
+    Route::get('/associate','StandardPageController@associateForm');
+});

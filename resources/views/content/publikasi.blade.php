@@ -1,6 +1,6 @@
 @extends('base')
 @section('title')
-  {{ $title }}
+  {{-- {{ $title }} --}}
 @endsection
 @section('bcrumb_title')
   Publications

@@ -52,12 +52,18 @@
                                                     <div class="col-sm-8 col-sm-offset-2">
                                                         <div class="woocommerce-info">
                                                             <div class="col-sm-12">
+                                                                @if (session()->has('flash_notification'))
+                                                                <div class="alert alert-danger alert-bordered">
+                                                                    <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+                                                                    {{ session()->get('flash_notification.message') }}
+                                                                </div>
+                                                                @endif
                                                                 <p class="input-required">
                                                                     <label>
                                                                         <span class="first-letter">Email Address</span>  
                                                                         <span class="second-letter">*</span>
                                                                     </label>
-                                                                    <input type="email" class="input-text" name="email" value="">
+                                                                    <input type="email" class="input-text" name="email" value="{{ old('email') }}">
                                                                 </p>
                                                                 <p class="input-required">
                                                                     <label>

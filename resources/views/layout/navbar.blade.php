@@ -8,7 +8,7 @@
                             <div class="navbar-brand">
                                 <h1>
                                     <a href="http://ipa.or.id">
-                                        <img src="/template/images/logo_white-alt.png" alt="Indonesia Petroleum Association" />
+                                        <img src="/Template/images/logo_white-alt.png" alt="Indonesia Petroleum Association" />
                                     </a>
                                 </h1>
                             </div>
