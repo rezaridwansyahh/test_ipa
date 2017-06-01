@@ -227,10 +227,7 @@ class PublikasiController extends Controller
                 'searchFields' => $field
             );
             try {
-                $response = $this->client->get('publication_new',[
-                    'headers' => [
-                        'kunci-event' => session()->get('event_token')
-                    ],
+                $response = $this->client->get('publication',[
                     'query' => $query
                 ]);
                 $result = $response->getBody();
